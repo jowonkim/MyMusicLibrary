@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.MyMusicLibrary.dao.MusicMapper">
+
+	<!-- 음악 목록 -->
+	<select id="musicList"
+		resultType="com.spring.MyMusicLibrary.dto.MusicDTO">
+		SELECT * FROM mvc_music_tbl
+		ORDER BY id
+	</select>
+
+	<!-- 음악 등록 -->
+	<insert id="insertMusic"
+		parameterType="com.spring.MyMusicLibrary.dto.MusicDTO">
+		INSERT INTO mvc_music_tbl(title, artist, genre, release_date, price)
+		VALUES(#{title},
+		#{artist}, #{genre}, #{releaseDate}, #{price})
+	</insert>
+
+	<!-- 음악 상세 -->
+	<select id="selectMusic" parameterType="int"
+		resultType="com.spring.MyMusicLibrary.dto.MusicDTO">
+		SELECT * FROM mvc_music_tbl
+		WHERE id=#{id}
+	</select>
+
+	<!-- 음악 수정 -->
+	<update id="updateMusic"
+		parameterType="com.spring.MyMusicLibrary.dto.MusicDTO">
+		UPDATE mvc_music_tbl
+		SET title=#{title},
+		artist=#{artist},
+		genre=#{genre},
+		release_date=#{releaseDate},
+		price=#{price}
+		WHERE id=#{id}
+	</update>
+
+	<!-- 음악 삭제 -->
+	<delete id="deleteMusic" parameterType="int">
+		DELETE FROM mvc_music_tbl
+		WHERE id=#{id}
+	</delete>
+
+</mapper>
