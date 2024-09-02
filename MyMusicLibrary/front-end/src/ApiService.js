@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // API의 기본 URL
-const MUSIC_API_BASE_URL = "http://localhost:8081/music/";
+const MUSIC_API_BASE_URL = "http://localhost:8080/tigerdb/";
 
 class ApiService {
     // 제품 목록을 가져오는 메서드
